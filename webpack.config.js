@@ -6,9 +6,9 @@
 const path = require('path')
 
 // resolve()は、絶対パスを生成するメソッド
-// webpack.config.jsファイルが存在している現在のディレクトリ名と、distディレクトリを連結している
+// webpack.config.jsファイルが存在している現在のディレクトリ名と、distディレクトリを連結して絶対パスに変換している
 const outputPath = path.resolve(__dirname, 'dist')
-console.log(outputPath)
+console.log('これがoutputPathです：' + outputPath)
 
 // モジュールにオブジェクトを設定する
 module.exports = {
@@ -18,6 +18,7 @@ module.exports = {
     output: {
         // 出力するファイル名を設定
         filename: 'main.js',
+        // 絶対パスを指定
         path: outputPath
     }
 }

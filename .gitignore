@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# バンドルファイルを除外
+dist/main.js
