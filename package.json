@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/shimanamisan/webpack-practice#readme",
   "devDependencies": {
+    "acorn": "^7.1.1",
     "live-server": "^1.2.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   }
 }

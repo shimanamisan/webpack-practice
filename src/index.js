@@ -1,4 +1,4 @@
-'use strict';
+import _ from 'lodash';
 
 // div要素を生成する関数を作成
 function component(){
