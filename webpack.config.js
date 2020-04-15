@@ -19,5 +19,8 @@ module.exports = {
         // 出力するファイル名を設定
         filename: 'main.js',
         path: outputPath
+    },
+    devServer: {
+        contentBase: outputPath
     }
 }
