@@ -20,5 +20,8 @@ module.exports = {
         filename: 'main.js',
         // 絶対パスを指定
         path: outputPath
+    },
+    devServer: {
+        contentBase: outputPath
     }
 }
