@@ -10,7 +10,10 @@ import _ from "lodash";
 // import { NAME as NAME_HAMU } from "./utilities";
 // console.log(NAME_HAMU);
 
-import Tigger from "./utilities";
+import Tigger from "./utilities"; // utilities.jsファイルを読み込む
+import style from "./style.css"; // jsファイルではないので拡張子までつける！
+
+// console.log(style.toString())
 
 // div要素を生成する関数を作成
 function component() {
@@ -22,3 +25,5 @@ function component() {
 
 // bodyタグの子要素として、divタグを生成する関数を呼ぶ
 document.body.appendChild(component());
+// js側からクラスを追加する
+document.body.classList.add('bg-body');
