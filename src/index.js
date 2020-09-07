@@ -12,8 +12,12 @@ import _ from "lodash";
 
 import Tigger from "./utilities"; // utilities.jsファイルを読み込む
 import style from "./style.css"; // jsファイルではないので拡張子までつける！
-
+// style.cssがstyleオブジェクトという形で読み込まれる
+// styleオブジェクトをコンソールログでみると、toString()というメソッドを持っている
 // console.log(style.toString())
+
+// test_imgオブジェクトで画像を読み込む
+import test_img from "./img/01.jpg"
 
 // div要素を生成する関数を作成
 function component() {
@@ -27,3 +31,8 @@ function component() {
 document.body.appendChild(component());
 // js側からクラスを追加する
 document.body.classList.add('bg-body');
+
+// イメージオブジェクトを生成
+const image = new Image();
+image.src = test_img;
+document.body.appendChild(image);

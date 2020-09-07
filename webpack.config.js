@@ -30,6 +30,17 @@ module.exports = {
         // 読み込むローダーを指定
         use: ["style-loader","css-loader"],
       },
+      {
+        // 拡張子の大文字も許容するように最後尾に i を加える
+        // jpegとjpgの様にeがあるかないかを許容するのに、jpe?gという形式にする
+        test: /\.(jpe?g|png|svg|gif|ico)$/i, 
+        loader: 'url-loader',
+        options:{
+          // 指定のサイズを超過すると、画像が[name]で指定されたファイルに書き換わり独立する
+          limit: 2048,
+          name: './opimage/[name].[ext]'
+        }
+      }
     ],
   },
   devServer: {
