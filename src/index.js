@@ -11,10 +11,14 @@ import _ from "lodash";
 // console.log(NAME_HAMU);
 
 import Tigger from "./utilities"; // utilities.jsファイルを読み込む
-import style from "./style.css"; // jsファイルではないので拡張子までつける！
+
+// import style from "./style.css" 読み込むだけなら書き方は短縮できる
+import "./style.css"; // jsファイルではないので拡張子までつける！
 // style.cssがstyleオブジェクトという形で読み込まれる
 // styleオブジェクトをコンソールログでみると、toString()というメソッドを持っている
 // console.log(style.toString())
+
+import "./style.scss"; // jsファイルではないので拡張子までつける！
 
 // test_imgオブジェクトで画像を読み込む
 import test_img from "./img/01.jpg"

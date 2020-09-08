@@ -28,19 +28,26 @@ module.exports = {
         // 読み込んだローダーをどういったファイルを登録するのか、正規表現で記述する
         test: /\.css$/, // .cssというファイルに使用するローダーと関連付ける
         // 読み込むローダーを指定
-        use: ["style-loader","css-loader"],
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        // 読み込んだローダーをどういったファイルを登録するのか、正規表現で記述する
+        test: /\.scss$/, // .cssというファイルに使用するローダーと関連付ける
+        // sass-loader:scssファイルを読み込むローダー
+        // ローダーは配列内の最後の要素から順番に読み込まれる
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         // 拡張子の大文字も許容するように最後尾に i を加える
         // jpegとjpgの様にeがあるかないかを許容するのに、jpe?gという形式にする
-        test: /\.(jpe?g|png|svg|gif|ico)$/i, 
-        loader: 'url-loader',
-        options:{
+        test: /\.(jpe?g|png|svg|gif|ico)$/i,
+        loader: "url-loader",
+        options: {
           // 指定のサイズを超過すると、画像が[name]で指定されたファイルに書き換わり独立する
           limit: 2048,
-          name: './opimage/[name].[ext]'
-        }
-      }
+          name: "./opimage/[name].[ext]",
+        },
+      },
     ],
   },
   devServer: {
