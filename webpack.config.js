@@ -12,8 +12,10 @@ const outputPath = path.resolve(__dirname, "dist");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // CSSファイルを別ファイルへ出力するためのプラグイン
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//
+// プロダクションモードでバンドル時に、console.logを自動的に削除するプラグイン
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// CSSのファイルを圧縮するプラグイン
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 console.log("これがoutputPathです：" + outputPath);
 
@@ -96,6 +98,7 @@ module.exports = {
           },
         },
       }),
+      new OptimizeCssAssetsPlugin({}),
     ],
   },
 };
