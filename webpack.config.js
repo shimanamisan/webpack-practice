@@ -8,8 +8,10 @@ const path = require("path");
 // resolve()は、絶対パスを生成するメソッド
 // webpack.config.jsファイルが存在している現在のディレクトリ名と、distディレクトリを連結して絶対パスに変換している
 const outputPath = path.resolve(__dirname, "dist");
-//
+// HTMLテンプレートファイルを読み込むプラグイン
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// CSSファイルを別ファイルへ出力するためのプラグイン
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 console.log("これがoutputPathです：" + outputPath);
 
@@ -29,16 +31,14 @@ module.exports = {
     rules: [
       {
         // 読み込んだローダーをどういったファイルを登録するのか、正規表現で記述する
-        test: /\.css$/, // .cssというファイルに使用するローダーと関連付ける
-        // 読み込むローダーを指定
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        // 読み込んだローダーをどういったファイルを登録するのか、正規表現で記述する
-        test: /\.scss$/, // .cssというファイルに使用するローダーと関連付ける
+        test: /\.(sc|c)ss$/, // scssもしくはcssというファイルに使用するローダーと関連付ける（正規表現に変更）
         // sass-loader:scssファイルを読み込むローダー
         // ローダーは配列内の最後の要素から順番に読み込まれる
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader, // style-loaderから変更
+          "css-loader",
+          "sass-loader"
+        ],
       },
       {
         // 拡張子の大文字も許容するように最後尾に i を加える
@@ -74,9 +74,13 @@ module.exports = {
     // プラグインのインスタンスを生成
     new HtmlWebpackPlugin({
       // 雛形ファイルを指定する
-      template: './src/index.html', // 雛形ファイルが配置されている場所
-      filename: './index.html' // 出力するファイル名
-
+      template: "./src/index.html", // 雛形ファイルが配置されている場所
+      filename: "./index.html", // 出力するファイル名
+    }),
+    new MiniCssExtractPlugin({
+      // [name]：デフォルトでmainという名前が使用される
+      // [hash]：バンドル時にユニークな名前がつけられる
+      filename: "[name].[hash].css"
     })
-  ]
+  ],
 };
