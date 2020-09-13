@@ -12,6 +12,8 @@ const outputPath = path.resolve(__dirname, "dist");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // CSSファイルを別ファイルへ出力するためのプラグイン
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 console.log("これがoutputPathです：" + outputPath);
 
@@ -37,7 +39,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader, // style-loaderから変更
           "css-loader",
-          "sass-loader"
+          "sass-loader",
         ],
       },
       {
@@ -80,7 +82,20 @@ module.exports = {
     new MiniCssExtractPlugin({
       // [name]：デフォルトでmainという名前が使用される
       // [hash]：バンドル時にユニークな名前がつけられる
-      filename: "[name].[hash].css"
-    })
+      filename: "[name].[hash].css",
+    }),
   ],
+  // 最適化（webpack4から導入された）
+  optimization: {
+    // optimizationの設定の中のminimizerという設定にUglifyJsPluginインスタンスを渡す
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          },
+        },
+      }),
+    ],
+  },
 };
