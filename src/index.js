@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import './style.css'
-import './style.scss'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './style.css';
+import './style.scss';
 
-console.log('I am Log!')
+console.log('I am Log!');
 
-ReactDOM.render(<div className="react">Hi! React</div>, document.getElementById("root"));
+ReactDOM.render(<div className="react">Hi! React</div>, document.getElementById('root'));
